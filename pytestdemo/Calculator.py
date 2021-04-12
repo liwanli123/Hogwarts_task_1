@@ -6,21 +6,18 @@ __time__ = '2021/4/8 8:50 下午'
 
 # 计算器
 class Calculator:
-    # 相加
+    # 加法
     def add(self, a, b):
-        return a + b
+        return round(a + b, 3)
 
-    # 相除
+    # 除法
     def div(self, a, b):
-        if b == 0:
-            return "除数不能为0"
-        else:
-            return a / b
+        return round(a / b, 3)
 
-    # 相乘
+    # 乘法
     def mul(self, a, b):
-        return a * b
+        return round(a * b, 3)
 
-    # 相减
+    # 减法
     def sub(self, a, b):
-        return a - b
+        return round(a - b, 3)

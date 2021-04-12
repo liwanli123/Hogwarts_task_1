@@ -2,59 +2,40 @@
 __author__ = 'hogwarts_xixi'
 __time__ = '2021/4/8 8:47 下午'
 """
-import pytest
-import yaml
-from Calculator import Calculator
-
+from pytestdemo.Calculator import Calculator
 
 class TestCal:
 
-    def setup_class(self):
-        print("setup Test")
+    def test_add(self, addData, get_calc):
+        try:
+            assert addData[2] == Calculator().add(addData[0], addData[1])
+        except TypeError:
+            print("请输入数字")
+        except IndexError:
+            print("不能输入空字符")
 
-    def teardown_class(self):
-        print("Teardown Test")
+    def test_div(self, divData, get_calc):
+        try:
+            assert divData[2] == Calculator().div(divData[0], divData[1])
+        except TypeError:
+            print("请输入数字")
+        except IndexError:
+            print("不能输入空字符")
+        except ZeroDivisionError:
+            print("除数不能为0")
 
-    @pytest.fixture(scope='function')
-    def add(self):
-        print("Add Setup")
-        yield
-        print("Add Teardown ")
+    def test_mul(self, mulData, get_calc):
+        try:
+            assert mulData[2] == Calculator().mul(mulData[0], mulData[1])
+        except TypeError:
+            print("请输入数字")
+        except IndexError:
+            print("不能输入空字符")
 
-    @pytest.fixture(scope='function')
-    def div(self):
-        print("Div Setup")
-        yield
-        print("Div Teardown ")
-
-    @pytest.fixture(scope='function')
-    def mul(self):
-        print("Mul Setup")
-        yield
-        print("Mul Teardown ")
-
-    @pytest.fixture(scope='function')
-    def sub(self):
-        print("Sub Setup")
-        yield
-        print("Sub Teardown ")
-
-    @pytest.mark.parametrize('a,b,expect', yaml.safe_load(open("add.yaml", encoding='utf-8')))
-    @pytest.mark.usefixtures("add")
-    def test_add(self, a, b, expect):
-        assert expect == Calculator().add(a, b)
-
-    @pytest.mark.parametrize('a,b,expect', yaml.safe_load(open("div.yaml", encoding='utf-8')))
-    @pytest.mark.usefixtures("div")
-    def test_div(self, a, b, expect):
-        assert expect == Calculator().div(a, b)
-
-    @pytest.mark.parametrize('a,b,expect', yaml.safe_load(open("mul.yaml", encoding='utf-8')))
-    @pytest.mark.usefixtures("mul")
-    def test_mul(self, a, b, expect):
-        assert expect == Calculator().mul(a, b)
-
-    @pytest.mark.parametrize('a,b,expect', yaml.safe_load(open("sub.yaml", encoding='utf-8')))
-    @pytest.mark.usefixtures("sub")
-    def test_sub(self, a, b, expect):
-        assert expect == Calculator().sub(a, b)
+    def test_sub(self, subData, get_calc):
+        try:
+            assert subData[2] == Calculator().sub(subData[0], subData[1])
+        except TypeError:
+            print("请输入数字")
+        except IndexError:
+            print("不能输入空字符")
