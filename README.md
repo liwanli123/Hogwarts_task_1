@@ -6,4 +6,4 @@
 
 ## 作业提交地址
 - [pytest课后作业1](https://github.com/liwanli123/Hogwarts_task_1)
-123
+- [pytest课后作业2](https://github.com/liwanli123/Hogwarts_task_1/tree/dev)
